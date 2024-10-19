@@ -1,0 +1,475 @@
+/* 基本設置 */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    color: #212121;
+}
+
+
+.question-block {
+    background: linear-gradient(135deg, #e0e7ff, #f8f9fa);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.question-block label {
+    font-weight: 500;
+    color: #333;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background: linear-gradient(135deg, #e1bee7, #e0f7fa);
+    border-radius: 10px;
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #ffffff, #f0f4c3);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.options label:hover {
+    transform: scale(1.05);
+}
+
+.options input[type="radio"] {
+    margin-right: 8px;
+}
+
+
+
+
+/* 問卷介紹區塊設計 */
+#survey-intro {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 350px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+#survey-intro h1 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+#survey-intro p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+#survey-intro button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+#survey-intro button:hover {
+    background-color: #45a049;
+}
+
+
+/* 基本資料輸入區使用 Material Design 風格 */
+#basic-info-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 350px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* 基本資料輸入區的標題 */
+#basic-info-form h1 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: #212121;
+    text-align: center;
+}
+
+/* 電子郵件和駕駛資料的輸入框 */
+#basic-info-form label {
+    font-size: 14px;
+    color: #424242;
+    margin-bottom: 8px;
+    display: block;
+}
+
+#basic-info-form input, #basic-info-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 14px;
+    background-color: #fafafa;
+}
+
+/* 提交按鈕的設計 */
+#submit-info-button {
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #1E88E5;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    width: 100%;
+    max-width: 250px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    margin: 0 auto;
+    display: block;
+}
+
+#submit-info-button:hover {
+    background-color: #1565C0;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 保持原有設計風格的其他區域 */
+#main-menu, #quiz-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* 一般按鈕的設計 */
+button {
+    padding: 12px 28px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+
+#demo-result-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+#demo-result-container h2 {
+    color: #4CAF50;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#demo-result-container p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+#demo-result-container p.correct {
+    color: #28a745;
+}
+
+#demo-result-container p.incorrect {
+    color: #dc3545;
+}
+
+#demo-result-container strong {
+    color: #333;
+}
+
+#start-real-quiz-button {
+    margin-top: 30px;
+    padding: 12px 24px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#start-real-quiz-button:hover {
+    background-color: #0056b3;
+}
+
+#start-real-quiz-button:focus {
+    outline: none;
+}
+
+
+
+/* 測驗區域的樣式 */
+#quiz-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+/* 按鈕選項區域設計 */
+#options-container {
+    display: flex;
+    flex-direction: column; /* 改為垂直排列 */
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* 視頻容器設計 */
+#video-container {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+video {
+    border-radius: 8px;
+    width: 100%;
+    height: 250px;
+    pointer-events: none;  /* 禁止所有與影片的滑鼠互動，確保影片無法被點擊控制 */
+    user-select: none;     /* 禁止選擇，避免拖動影片 */
+    outline: none;    /* 移除任何焦點樣式 */
+}
+
+/* 輸入表單的 hover 效果 */
+#basic-info-form input:hover, #basic-info-form select:hover {
+    border-color: #1E88E5;
+}
+
+/* 按鈕在測驗區域的樣式 */
+#quiz-container button {
+    padding: 10px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#quiz-container button:hover {
+    background-color: #218838;
+}
+
+/* 隱藏區域 */
+.hidden {
+    display: none;
+}
+
+/* 按鈕選項設計 */
+.button-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.button-options button {
+    padding: 10px 16px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.button-options button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.button-options button:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.button-options button.active {
+    background-color: #004085;
+}
+
+.textarea-container {
+    margin-top: 10px;
+}
+
+textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    resize: vertical;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* 結果區設計 */
+#result-container {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.question-block {
+    margin-bottom: 15px;
+}
+
+.question-block label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#result-container {
+    margin: 20px auto;
+    text-align: center;
+    width: 90%;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#result-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#result-table th, #result-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#result-table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+#result-table td {
+    text-align: center;
+}
+
+#result-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#result-table tr:hover {
+    background-color: #ddd;
+}
+
+#summary {
+    font-size: 1.1em;
+    color: #333;
+    margin-top: 20px;
+}
+
+/* 樣式化表格 */
+.styled-table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 100%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.styled-table tr {
+    background-color: #f3f3f3;
+    color: #333;
+}
+
+.styled-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.styled-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.styled-table td:first-child {
+    border-left: 0;
+}
+
+.styled-table td:last-child {
+    border-right: 0;
+}
+
+.required {
+    color: red;
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.options input[type="radio"] {
+    margin-right: 10px;
+}

@@ -1,0 +1,534 @@
+/* 設置漸變背景及動畫，使用新的色號 #43CBFF 和 #9708CC */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #43CBFF, #9708CC);
+    background-size: 400% 400%;
+    animation: gradientBackground 15s ease infinite;
+    margin: 0;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    color: #333;
+    transition: all 0.5s ease;
+}
+
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 問卷區塊樣式 */
+.question-block {
+    background: #ffffff;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    width: 90%;
+    transition: all 0.4s ease;
+}
+
+.question-block:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
+}
+
+.question-block label {
+    font-weight: 600;
+    color: #5f6c7b;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* 選項設計 */
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    background: #e2ebf0;
+    border-radius: 15px;
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.options label:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+.options input[type="radio"] {
+    margin-right: 15px;
+    accent-color: #43CBFF;
+}
+
+/* 問卷介紹區塊設計 */
+#survey-intro {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 60px;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+#survey-intro:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+#survey-intro h1 {
+    font-size: 32px;
+    margin-bottom: 25px;
+    color: #5f6c7b;
+}
+
+#survey-intro p {
+    font-size: 18px;
+    color: #7a8a99;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+#survey-intro button {
+    background-color: #43CBFF;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.4s ease;
+}
+
+#survey-intro button:hover {
+    background-color: #9708CC;
+    transform: scale(1.05);
+}
+
+/* 表格設計 */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 40px 0;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+.styled-table thead tr {
+    background-color: #43CBFF;
+    color: #fff;
+    font-weight: bold;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.styled-table tbody tr {
+    background-color: #f0f4f8;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #e0e8ef;
+    transform: scale(1.02);
+}
+
+/* 表單區域設計 */
+#basic-info-form {
+    background: #ffffff;
+    padding: 70px;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+#basic-info-form:hover {
+    transform: translateY(-10px);
+}
+
+#basic-info-form h1 {
+    font-size: 34px;
+    color: #5f6c7b;
+    margin-bottom: 40px;
+}
+
+#basic-info-form input, #basic-info-form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: #fafafa;
+    transition: $1 0.6s ease;
+}
+
+#basic-info-form input:focus, #basic-info-form select:focus {
+    border-color: #43CBFF;
+    outline: none;
+}
+
+#submit-info-button {
+    padding: 14px 28px;
+    font-size: 18px;
+    background-color: #1E88E5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: $1 0.6s ease;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    margin: 0 auto;
+    display: block;
+}
+
+#submit-info-button:hover {
+    background: linear-gradient(to right, #9708CC, #43CBFF);
+    transform: translateY(-5px);
+}
+
+
+/* 開始按鈕樣式設計 */
+#start-button {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.4s ease;
+    display: block;
+    margin: 40px auto 0 auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+#start-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* 主要標題樣式設計 */
+#main-menu h1 {
+    color: #333;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* 規則列表樣式設計 */
+ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+    color: #eae1e1;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+ol li {
+    margin-bottom: 10px;
+}
+
+ol li strong {
+    color: #9708CC;
+}
+
+/* 測驗規則標題 h2 樣式設計 */
+.rules h2 {
+    color: #d7b08c;
+    font-size: 28px;
+    text-align: left;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+/* 測驗區設計 */
+#quiz-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 1100px;
+    width: 80%;
+    text-align: center;
+    height: 100%;
+    margin: auto;
+}
+
+#quiz-container:hover {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* 視頻容器設計 */
+#video-container {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+video {
+    border-radius: 8px;
+    width: 80%;
+    height: 80%;
+    pointer-events: none;
+    user-select: none;
+    outline: none;
+    transition: $1 0.6s ease;
+}
+
+/* 一般按鈕設計 */
+button {
+    padding: 16px 36px;
+    font-size: 24px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: $1 0.6s ease;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+/* 結果區設計 */
+#result-container {
+    padding: 50px;
+    background: #e2ebf0;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    max-width: 1200px;
+    width: 80%;
+    margin: 60px auto;
+    text-align: center;
+}
+
+#result-container:hover {
+    transform: scale(1.05);
+}
+
+#result-container h2 {
+    color: #43CBFF;
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+#result-container p {
+    font-size: 20px;
+    color: #7a8a99;
+}
+
+/* 結果表格樣式 */
+#result-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+#result-table th, #result-table td {
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+}
+
+#result-table th {
+    background-color: #43CBFF;
+    color: #fff;
+    font-weight: bold;
+}
+
+#result-table tr:nth-child(even) {
+    background-color: #f0f4f8;
+}
+
+#result-table tr:hover {
+    background-color: #e0e8ef;
+}
+
+/* 按鈕選項區域設計 */
+
+.button-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.button-options button {
+    padding: 12px 24px;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.button-options button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.button-options button:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.button-options button.active {
+    background-color: #004085;
+}
+
+
+
+/* 樣式調整過的checkbox */
+input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+    accent-color: #43CBFF;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+input[type="checkbox"]:hover {
+    transform: scale(1.15);
+}
+
+/* 隱藏區域樣式 */
+.hidden {
+    display: none;
+}
+
+/* Textarea 樣式 */
+textarea {
+    width: calc(100% - 30px);
+    padding: 20px;
+    font-size: 18px;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+    transition: all 0.4s ease;
+    margin-bottom: 30px;
+    background-color: #f0f4f8;
+    color: #333;
+}
+
+textarea:focus {
+    border-color: #43CBFF;
+    outline: none;
+}
+
+textarea:hover {
+    border-color: #43CBFF;
+}
+
+/* 加強動態效果，讓網頁更有流暢感 */
+* {
+    transition: all 0.4s ease;
+}
+
+/* 圖片視頻hover效果 */
+video {
+    border-radius: 15px;
+    transition: all 0.4s ease;
+}
+
+video:hover {
+    filter: brightness(1.1);
+    transform: scale(1.05);
+}
+
+/* 頁腳設計 */
+footer {
+    background: #e2ebf0;
+    color: #5f6c7b;
+    padding: 40px;
+    text-align: center;
+    border-radius: 25px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    margin-top: 60px;
+    width: 100%;
+    max-width: 1400px;
+}
+
+footer:hover {
+    background: #cfd9df;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+}
+
+footer p {
+    font-size: 18px;
+    margin: 0;
+}
+
+/* 添加導航欄樣式 */
+nav {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 1400px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.4s ease;
+}
+
+nav a {
+    color: #43CBFF;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0 20px;
+    transition: all 0.4s ease;
+}
+
+nav a:hover {
+    color: #9708CC;
+    transform: scale(1.1);
+}
+
+nav .logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #43CBFF;
+}
