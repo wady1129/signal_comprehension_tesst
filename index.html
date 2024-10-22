@@ -4,7 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>駕駛人行為測驗</title>
+    <title>駕駛人行為測驗</title>  
+    <!-- Firebase App (核心 SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <!-- Firebase Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+    <!-- Firebase Realtime Database -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -24,6 +30,8 @@
         <p>再次感謝您的參與和支持！</p>
         <h2>個人資料保護聲明</h2>
         <p>在參與問卷的過程中，我們會確保您的個人資料安全。所有收集的資料僅供本次研究使用，並且會以匿名的方式進行處理。我們不會將任何個人資料洩露給第三方，且所有資料在研究結束後將被妥善銷毀。</p>
+        <h2>抽獎說明</h2>
+        <p>為了提升數據的可信度，我們誠摯邀請您認真填寫每一個問題，並請提供正確的電子郵件。我們預計收集 300 份有效問卷數據，所有有效完成問卷的受訪者皆有機會參加抽獎活動。問卷結束後，我們將從有效問卷中隨機抽取 10 名幸運得主，每位得主將獲得星巴克禮卷一張。期待您的支持與參與！</p>
         <button id="agree-button">我已閱讀並同意以上說明，開始填寫問卷</button>
     </div>
 
@@ -83,7 +91,7 @@
                 <li>每題均為不同情境與不同號誌組合，其中包含現有號誌(不另外解釋)，以及引入獨立左轉號誌，說明如下表</li>
                 <li>進入題目頁面後，駕駛模擬影片會自動播放</li>
                 <li>影片播放前3秒號誌為全黑，3秒後依顯示號誌點擊選項按鈕作答</li>
-                <li><strong style="color: white;">請根據號誌所傳達的指令做選擇</strong></li>
+                <li><strong style="color: red;">請根據號誌所傳達的指令做選擇</strong></li>
             </ol>
     
             <table class="styled-table">
