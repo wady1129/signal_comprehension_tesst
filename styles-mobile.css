@@ -1,475 +1,558 @@
-/* 基本設置 */
+/* 設置漸變背景及動畫，使用新的色號 #43CBFF 和 #9708CC */
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f8f9fa;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #43CBFF, #9708CC);
+    background-size: 400% 400%;
+    animation: gradientBackground 15s ease infinite;
     margin: 0;
-    padding: 20px;
+    padding: 20px; /* 調整內邊距 */
     display: flex;
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
-    color: #212121;
+    color: #333;
+    transition: all 0.5s ease;
 }
 
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
+/* 問卷區塊樣式 */
 .question-block {
-    background: linear-gradient(135deg, #e0e7ff, #f8f9fa);
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    padding: 20px; /* 調整內邊距 */
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px; /* 調整邊距 */
+    width: 90%;
+    transition: all 0.4s ease;
+}
+
+.question-block:hover {
+    transform: translateY(-5px); /* 減少懸停效果 */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
 }
 
 .question-block label {
-    font-weight: 500;
-    color: #333;
+    font-weight: 600;
+    color: #5f6c7b;
+    margin-bottom: 10px; /* 調整邊距 */
     display: block;
-    margin-bottom: 10px;
 }
 
+/* 選項設計 */
 .options {
     display: flex;
-    justify-content: space-around;
-    padding: 10px;
-    background: linear-gradient(135deg, #e1bee7, #e0f7fa);
+    flex-direction: column;
+    gap: 10px; /* 調整間距 */
+    padding: 10px; /* 調整內邊距 */
+    background: #e2ebf0;
     border-radius: 10px;
 }
 
 .options label {
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #ffffff, #f0f4c3);
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    padding: 10px; /* 調整內邊距 */
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: all 0.4s ease;
 }
 
 .options label:hover {
-    transform: scale(1.05);
+    transform: scale(1.02); /* 減少懸停效果 */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
 }
 
 .options input[type="radio"] {
-    margin-right: 8px;
+    margin-right: 10px; /* 調整間距 */
+    accent-color: #43CBFF;
 }
-
-
-
 
 /* 問卷介紹區塊設計 */
 #survey-intro {
-    background-color: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 350px;
-    margin-bottom: 20px;
-    text-align: left;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px; /* 調整內邊距 */
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    max-width: 90%; /* 調整最大寬度 */
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+#survey-intro:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
 #survey-intro h1 {
-    font-size: 22px;
-    margin-bottom: 15px;
-    color: #333;
+    font-size: 24px; /* 調整字體大小 */
+    margin-bottom: 15px; /* 調整邊距 */
+    color: #5f6c7b;
 }
 
 #survey-intro p {
-    font-size: 14px;
-    color: #555;
-    line-height: 1.5;
-    margin-bottom: 15px;
+    font-size: 16px; /* 調整字體大小 */
+    color: #7a8a99;
+    line-height: 1.5; /* 調整行高 */
+    margin-bottom: 15px; /* 調整邊距 */
 }
 
 #survey-intro button {
-    background-color: #4CAF50;
+    background-color: #43CBFF;
     color: white;
-    padding: 8px 16px;
+    padding: 10px 20px; /* 調整內邊距 */
     border: none;
-    border-radius: 5px;
+    border-radius: 30px;
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
+    font-size: 16px; /* 調整字體大小 */
+    transition: all 0.4s ease;
 }
 
 #survey-intro button:hover {
-    background-color: #45a049;
+    background-color: #9708CC;
+    transform: scale(1.03); /* 減少懸停效果 */
 }
 
+/* 表格設計 */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5px 0; /* 調整邊距 */
+    font-size: 14px; /* 調整字體大小 */
+    text-align: center;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+}
 
-/* 基本資料輸入區使用 Material Design 風格 */
+.styled-table thead tr {
+    background-color: #43CBFF;
+    color: #fff;
+    font-weight: bold;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 10px; /* 調整內邊距 */
+    border-bottom: 1px solid #ddd;
+}
+
+.styled-table tbody tr {
+    background-color: #f0f4f8;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #e0e8ef;
+}
+
+/* 表單區域設計 */
 #basic-info-form {
-    background-color: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 350px;
-    margin-bottom: 20px;
+    background: #ffffff;
+    padding: 30px; /* 調整內邊距 */
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    max-width: 90%; /* 調整最大寬度 */
     text-align: center;
+    transition: all 0.4s ease;
 }
 
-/* 基本資料輸入區的標題 */
+#basic-info-form:hover {
+    transform: translateY(-5px);
+}
+
 #basic-info-form h1 {
-    font-size: 24px;
-    margin-bottom: 16px;
-    color: #212121;
-    text-align: center;
-}
-
-/* 電子郵件和駕駛資料的輸入框 */
-#basic-info-form label {
-    font-size: 14px;
-    color: #424242;
-    margin-bottom: 8px;
-    display: block;
+    font-size: 28px; /* 調整字體大小 */
+    color: #5f6c7b;
+    margin-bottom: 20px; /* 調整邊距 */
 }
 
 #basic-info-form input, #basic-info-form select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 16px;
+    width: calc(100% - 20px); /* 調整寬度 */
+    padding: 10px; /* 調整內邊距 */
+    margin-bottom: 15px; /* 調整邊距 */
     border: 1px solid #ccc;
-    border-radius: 6px;
+    border-radius: 4px;
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 14px; /* 調整字體大小 */
     background-color: #fafafa;
+    transition: 1 0.6s ease;
 }
 
-/* 提交按鈕的設計 */
+#basic-info-form input:focus, #basic-info-form select:focus {
+    border-color: #43CBFF;
+    outline: none;
+}
+
 #submit-info-button {
-    padding: 12px 24px;
-    font-size: 16px;
+    padding: 10px 20px; /* 調整內邊距 */
+    font-size: 16px; /* 調整字體大小 */
     background-color: #1E88E5;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s, box-shadow 0.3s;
+    transition: 1 0.6s ease;
     width: 100%;
-    max-width: 250px;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    max-width: 300px; /* 調整最大寬度 */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     margin-top: 10px;
     margin: 0 auto;
     display: block;
 }
 
 #submit-info-button:hover {
-    background-color: #1565C0;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to right, #9708CC, #43CBFF);
+    transform: translateY(-5px);
 }
 
-/* 保持原有設計風格的其他區域 */
-#main-menu, #quiz-container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    width: 100%;
-    text-align: center;
-    margin-top: 20px;
-}
-
-/* 一般按鈕的設計 */
-button {
-    padding: 12px 28px;
-    font-size: 18px;
+/* 開始按鈕樣式設計 */
+#start-button {
     background-color: #007bff;
     color: white;
+    padding: 10px 20px; /* 調整內邊距 */
     border: none;
-    border-radius: 8px;
+    border-radius: 30px;
     cursor: pointer;
-    transition: background-color 0.3s;
-    margin: 10px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px; /* 調整字體大小 */
+    transition: all 0.4s ease;
+    display: block;
+    margin: 20px auto 0 auto; /* 調整邊距 */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-button:hover {
+#start-button:hover {
     background-color: #0056b3;
+    transform: scale(1.03); /* 減少懸停效果 */
 }
 
-
-
-#demo-result-container {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    max-width: 600px;
-    margin: 40px auto;
-    text-align: center;
-}
-
-#demo-result-container h2 {
-    color: #4CAF50;
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-#demo-result-container p {
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 20px;
-}
-
-#demo-result-container p.correct {
-    color: #28a745;
-}
-
-#demo-result-container p.incorrect {
-    color: #dc3545;
-}
-
-#demo-result-container strong {
+/* 主要標題樣式設計 */
+#main-menu h1 {
     color: #333;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-#start-real-quiz-button {
-    margin-top: 30px;
-    padding: 12px 24px;
-    font-size: 16px;
-    color: #ffffff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+/* 規則列表樣式設計 */
+ol {
+    list-style-type: decimal;
+    padding-left: 10px; /* 調整內邊距 */
+    color: #eae1e1;
+    font-size: 16px; /* 調整字體大小 */
+    line-height: 1.5; /* 調整行高 */
 }
 
-#start-real-quiz-button:hover {
-    background-color: #0056b3;
+ol li {
+    margin-bottom: 8px; /* 調整邊距 */
+    color: black;
 }
 
-#start-real-quiz-button:focus {
-    outline: none;
+ol li strong {
+    color: #9708CC;
 }
 
+/* 測驗規則標題 h2 樣式設計 */
+.rules h2 {
+    color: #8d3f00;
+    font-size: 24px; /* 調整字體大小 */
+    text-align: left;
+    margin-bottom: 15px; /* 調整邊距 */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
 
-
-/* 測驗區域的樣式 */
+/* 測驗區設計 */
 #quiz-container {
     background-color: white;
-    padding: 20px;
+    padding: 20px; /* 調整內邊距 */
     border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 90%; /* 調整最大寬度 */
+    width: 100%; /* 調整寬度 */
     text-align: center;
+    height: 100%;
+    margin: auto;
 }
 
-/* 按鈕選項區域設計 */
-#options-container {
-    display: flex;
-    flex-direction: column; /* 改為垂直排列 */
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
+#quiz-container:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 /* 視頻容器設計 */
 #video-container {
-    margin-bottom: 20px;
+    margin-bottom: 10px; /* 調整邊距 */
     width: 100%;
 }
 
 video {
     border-radius: 8px;
-    width: 100%;
-    height: 250px;
-    pointer-events: none;  /* 禁止所有與影片的滑鼠互動，確保影片無法被點擊控制 */
-    user-select: none;     /* 禁止選擇，避免拖動影片 */
-    outline: none;    /* 移除任何焦點樣式 */
+    width: 100%; /* 調整寬度 */
+    height: auto; /* 調整高度 */
+    pointer-events: none;
+    user-select: none;
+    outline: none;
+    transition: 1 0.6s ease;
 }
 
-/* 輸入表單的 hover 效果 */
-#basic-info-form input:hover, #basic-info-form select:hover {
-    border-color: #1E88E5;
-}
-
-/* 按鈕在測驗區域的樣式 */
-#quiz-container button {
-    padding: 10px 24px;
-    font-size: 16px;
-    border-radius: 8px;
-    background-color: #28a745;
+/* 一般按鈕設計 */
+button {
+    padding: 10px 20px; /* 調整內邊距 */
+    font-size: 20px; /* 調整字體大小 */
+    background-color: #007bff;
     color: white;
     border: none;
+    border-radius: 8px;
     cursor: pointer;
+    transition: 1 0.6s ease;
+    margin: 10px;
 }
 
-#quiz-container button:hover {
-    background-color: #218838;
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
 }
 
-/* 隱藏區域 */
-.hidden {
-    display: none;
+/* 結果區設計 */
+#result-container {
+    padding: 30px; /* 調整內邊距 */
+    background: #e2ebf0;
+    border-radius: 25px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    max-width: 90%; /* 調整最大寬度 */
+    width: 100%; /* 調整寬度 */
+    margin: 40px auto;
+    text-align: center;
 }
 
-/* 按鈕選項設計 */
+#result-container:hover {
+    transform: scale(1.02); /* 減少懸停效果 */
+}
+
+#result-container h2 {
+    color: #43CBFF;
+    font-size: 24px; /* 調整字體大小 */
+    margin-bottom: 15px; /* 調整邊距 */
+}
+
+#result-container p {
+    font-size: 16px; /* 調整字體大小 */
+    color: #7a8a99;
+}
+
+/* 結果表格樣式 */
+#result-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px; /* 調整邊距 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+#result-table th, #result-table td {
+    border: 1px solid #ddd;
+    padding: 10px; /* 調整內邊距 */
+    text-align: center;
+}
+
+#result-table th {
+    background-color: #43CBFF;
+    color: #fff;
+    font-weight: bold;
+}
+
+#result-table tr:nth-child(even) {
+    background-color: #f0f4f8;
+}
+
+#result-table tr:hover {
+    background-color: #e0e8ef;
+}
+
+/* 按鈕選項區域設計 */
 .button-options {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 10px; /* 調整間距 */
     justify-content: center;
     margin-top: 10px;
 }
 
 .button-options button {
-    padding: 10px 16px;
-    font-size: 14px;
+    padding: 10px 20px; /* 調整內邊距 */
+    font-size: 16px; /* 調整字體大小 */
     color: #ffffff;
     background-color: #007bff;
     border: none;
-    border-radius: 20px;
+    border-radius: 30px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .button-options button:hover {
     background-color: #0056b3;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .button-options button:active {
     transform: translateY(1px);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .button-options button.active {
     background-color: #004085;
 }
 
-.textarea-container {
-    margin-top: 10px;
-}
-
-textarea {
-    width: 100%;
-    padding: 8px;
-    font-size: 14px;
-    box-sizing: border-box;
-    resize: vertical;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-}
-
-/* 結果區設計 */
-#result-container {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.question-block {
-    margin-bottom: 15px;
-}
-
-.question-block label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-#result-container {
-    margin: 20px auto;
-    text-align: center;
-    width: 90%;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-#result-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-#result-table th, #result-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-#result-table th {
-    background-color: #4CAF50;
-    color: white;
-    font-weight: bold;
-    text-align: center;
-}
-
-#result-table td {
-    text-align: center;
-}
-
-#result-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-#result-table tr:hover {
-    background-color: #ddd;
-}
-
-#summary {
-    font-size: 1.1em;
-    color: #333;
-    margin-top: 20px;
-}
-
-/* 樣式化表格 */
-.styled-table {
-    margin: 20px auto;
-    border-collapse: collapse;
-    font-size: 14px;
-    min-width: 100%;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-}
-
-.styled-table td {
-    padding: 8px;
-    border: 1px solid #ddd;
-    text-align: center;
-}
-
-.styled-table tr {
-    background-color: #f3f3f3;
-    color: #333;
-}
-
-.styled-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.styled-table tr:hover {
-    background-color: #f1f1f1;
-}
-
-.styled-table td:first-child {
-    border-left: 0;
-}
-
-.styled-table td:last-child {
-    border-right: 0;
-}
-
-.required {
-    color: red;
-}
-
-.options label {
-    display: flex;
-    align-items: center;
-    margin-bottom: 8px;
+/* 樣式調整過的checkbox */
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #43CBFF;
+    border-radius: 5px;
     cursor: pointer;
+    transition: all 0.4s ease;
 }
 
-.options input[type="radio"] {
-    margin-right: 10px;
+input[type="checkbox"]:hover {
+    transform: scale(1.15);
+}
+
+/* 隱藏區域樣式 */
+.hidden {
+    display: none;
+}
+
+/* Textarea 樣式 */
+textarea {
+    width: calc(100% - 30px);
+    padding: 15px; /* 調整內邊距 */
+    font-size: 16px; /* 調整字體大小 */
+    border-radius: 15px;
+    border: 1px solid #ddd;
+    transition: all 0.4s ease;
+    margin-bottom: 20px; /* 調整邊距 */
+    background-color: #f0f4f8;
+    color: #333;
+}
+
+textarea:focus {
+    border-color: #43CBFF;
+    outline: none;
+}
+
+textarea:hover {
+    border-color: #43CBFF;
+}
+
+/* 加強動態效果，讓網頁更有流暢感 */
+* {
+    transition: all 0.4s ease;
+}
+
+/* 圖片視頻hover效果 */
+video {
+    border-radius: 15px;
+    transition: all 0.4s ease;
+}
+
+video:hover {
+    filter: brightness(1.1);
+    transform: scale(1.05);
+}
+
+/* 頁腳設計 */
+footer {
+    background: #e2ebf0;
+    color: #5f6c7b;
+    padding: 20px; /* 調整內邊距 */
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    margin-top: 40px; /* 調整邊距 */
+    width: 100%;
+    max-width: 100%; /* 調整最大寬度 */
+}
+
+footer:hover {
+    background: #cfd9df;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+}
+
+footer p {
+    font-size: 16px; /* 調整字體大小 */
+    margin: 0;
+}
+
+/* 添加導航欄樣式 */
+nav {
+    background: #ffffff;
+    padding: 20px; /* 調整內邊距 */
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 100%; /* 調整最大寬度 */
+    margin-bottom: 20px; /* 調整邊距 */
+    display: flex;
+    flex-direction: column; /* 調整為垂直排列 */
+    align-items: center;
+    transition: all 0.4s ease;
+}
+
+nav a {
+    color: #43CBFF;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px; /* 調整字體大小 */
+    margin: 10px 0; /* 調整邊距 */
+    transition: all 0.4s ease;
+}
+
+nav a:hover {
+    color: #9708CC;
+    transform: scale(1.1);
+}
+
+nav .logo {
+    font-size: 24px; /* 調整字體大小 */
+    font-weight: bold;
+    color: #43CBFF;
+}
+
+#demo-result-container {
+    background-color: white;
+    padding: 20px; /* 調整內邊距 */
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 90%; /* 調整最大寬度 */
+    width: 100%; /* 調整寬度 */
+    text-align: center;
+    height: 100%;
+    margin: auto;
+}
+
+#demo-result-container:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+#main-menu {
+    background-color: white;
+    padding: 20px; /* 調整內邊距 */
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 90%; /* 調整最大寬度 */
+    width: 100%; /* 調整寬度 */
+    text-align: center;
+    height: 100%;
+    margin: auto;
+}
+
+#main-menu:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
