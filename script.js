@@ -1,3 +1,18 @@
+const firebaseConfig = {
+    apiKey: "AIzaSyCMj_nn2sCMcSx7-BXKoIp03VhgwR7Bx6Y",
+    authDomain: "signalsavvytest-11c08.firebaseapp.com",
+    databaseURL: "https://signalsavvytest-11c08-default-rtdb.firebaseio.com",
+    projectId: "signalsavvytest-11c08",
+    storageBucket: "signalsavvytest-11c08.appspot.com",
+    messagingSenderId: "370537364030",
+    appId: "1:370537364030:web:acf61139c600736b5baf6f"
+  };
+  
+  firebase.initializeApp(firebaseConfig);
+  const analytics = firebase.analytics();
+  const signalsavvytestDB = firebase.database().ref('signalsavvytest');
+
+
 const questions = [
     {
         question: "請選擇號誌含意...",
@@ -10,17 +25,11 @@ const questions = [
         options: ["保護左轉", "非保護左轉", "不能左轉"],
         answer: 1,
         video: "video2.mp4"
-    },
-    {
-        question: "請選擇號誌含意...",
-        options: ["保護左轉", "非保護左轉", "不能左轉"],
-        answer: 0,
-        video: "video3.mp4"
     }
 ];
 
 const demoQuestion = {
-    question: "是範例題:請選擇號誌含意...",
+    question: "示範例題:請選擇號誌含意...",
     options: ["保護左轉", "非保護左轉", "不能左轉"],
     answer: 2,  
     video: "video0.mp4"
@@ -36,6 +45,30 @@ function shuffle(array) {
         item.question = `${index + 1}.請選擇號誌含意`;
     });
 }
+
+
+
+function saveResultsToFirebase() {
+    let allResults = {
+        date: new Date().toLocaleString(),
+        userInfo: userInfo,
+        answers: answers,
+        openEndedAnswers: userInfo.openEndedAnswers
+    };
+
+    // 將結果保存到 Firebase
+    const resultsRef = signalsavvytestDB.push();
+    resultsRef.set(allResults)
+    .then(() => {
+        alert("結果已成功提交！");
+    })
+    .catch((error) => {
+        alert("提交失敗，請重試。");
+        console.error("提交結果時發生錯誤：", error);
+    });
+}
+
+
 
 
 let isDemo = true; // 加入示範模式的標記
@@ -73,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const frequency = document.getElementById("frequency").value;
         const experience = document.getElementById("experience").value;
         const commute = document.getElementById("commute").value;
-
+    
         if (email && gender && age && frequency && experience && commute) {
             userInfo.email = email;
             userInfo.gender = gender;
@@ -81,38 +114,28 @@ document.addEventListener("DOMContentLoaded", () => {
             userInfo.frequency = frequency;
             userInfo.experience = experience;
             userInfo.commute = commute;
-
-            apiEndpoint = "https://formspree.io/f/mjkbzwwa";
-
-            const form = document.getElementById("basic-info-form");
-            form.action = apiEndpoint;
-
-            basicInfoForm.classList.add("hidden");
-            mainMenu.classList.remove("hidden");
+    
+            // 儲存基本資料到 Firebase
+            const newUserRef = signalsavvytestDB.push();
+            newUserRef.set(userInfo)
+            .then(() => {
+                basicInfoForm.classList.add("hidden");
+                mainMenu.classList.remove("hidden");
+            })
+            .catch((error) => {
+                console.error("儲存基本資料時發生錯誤：", error);
+            });
         } else {
             alert("請填寫所有資料！");
         }
     };
+    
 
 
     // Function to check if all checkboxes are checked
     function areAllCheckboxesChecked() {
         return Array.from(checkboxes).every(checkbox => checkbox.checked);
     }
-
-    // Add event listeners to checkboxes to ensure all rules are read
-    // checkboxes.forEach(checkbox => {
-    //     checkbox.addEventListener('change', function () {
-    //         if (areAllCheckboxesChecked()) {
-    //             startButton.disabled = false;
-    //         } else {
-    //             startButton.disabled = true;
-    //         }
-    //     });
-    // });
-
-    // Initially disable the start button until all checkboxes are checked
-    // startButton.disabled = true;
 
     startButton.onclick = () => {
         if (areAllCheckboxesChecked()) {
@@ -325,74 +348,48 @@ document.addEventListener("DOMContentLoaded", () => {
         optionsContainer.innerHTML = "";
         videoElement.classList.add("hidden");
         document.getElementById("result-container").classList.remove("hidden");
-
+    
         const resultTableBody = document.querySelector("#result-table tbody");
         resultTableBody.innerHTML = "";
-
+    
         let correctCount = 0;
-
+    
         answers.forEach((answer, index) => {
             const row = document.createElement("tr");
-
+    
             const questionNumberCell = document.createElement("td");
             questionNumberCell.textContent = `第 ${index + 1} 題`;
             row.appendChild(questionNumberCell);
-
+    
             const selectedOptionCell = document.createElement("td");
             selectedOptionCell.textContent = answer.selectedOption;
             row.appendChild(selectedOptionCell);
-
+    
             const correctOptionCell = document.createElement("td");
             correctOptionCell.textContent = questions[index].options[questions[index].answer];
             row.appendChild(correctOptionCell);
-
+    
             const timeTakenCell = document.createElement("td");
             timeTakenCell.textContent = answer.timeTaken + " 秒";
             row.appendChild(timeTakenCell);
-
+    
             resultTableBody.appendChild(row);
-
+    
             if (answer.correct) {
                 correctCount++;
             }
         });
-
+    
         const correctCountText = `你答對了 ${correctCount} 題`;
         const score = (correctCount / questions.length) * 100;
         const scoreText = `答對率為: ${score.toFixed(2)}%`;
-
+    
         document.getElementById("summary").innerHTML = `
             <p>${correctCountText}</p>
             <p>${scoreText}</p>
         `;
-
-        saveResultsToFormspree();
-    }
-
-    function saveResultsToFormspree() {
-        let allResults = {
-            date: new Date().toLocaleString(),
-            userInfo: userInfo,
-            answers: answers,
-            openEndedAnswers: userInfo.openEndedAnswers
-        };
-
-        fetch(apiEndpoint, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(allResults)
-        })
-        .then(response => {
-            if (response.ok) {
-                alert("結果已成功提交！");
-            } else {
-                alert("提交失敗，請重試。");
-            }
-        })
-        .catch(error => {
-            alert("發生錯誤：" + error.message);
-        });
+    
+        // 保存結果到 Firebase
+        saveResultsToFirebase();
     }
 });
