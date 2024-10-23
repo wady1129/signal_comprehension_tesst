@@ -227,6 +227,8 @@ document.addEventListener("DOMContentLoaded", () => {
             userInfo.frequency = frequency;
             userInfo.experience = experience;
             userInfo.commute = commute;
+            basicInfoForm.classList.add("hidden");
+            mainMenu.classList.remove("hidden");
         } else {
             alert("請填寫所有資料！");
         }
