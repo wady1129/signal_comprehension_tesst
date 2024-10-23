@@ -166,8 +166,7 @@ function saveResultsToFirebase() {
     let allResults = {
         date: new Date().toLocaleString(),
         userInfo: userInfo,
-        answers: answers,
-        openEndedAnswers: userInfo.openEndedAnswers
+        answers: answers
     };
 
     // 將結果保存到 Firebase
@@ -228,17 +227,6 @@ document.addEventListener("DOMContentLoaded", () => {
             userInfo.frequency = frequency;
             userInfo.experience = experience;
             userInfo.commute = commute;
-    
-            // 儲存基本資料到 Firebase
-            const newUserRef = signalsavvytestDB.push();
-            newUserRef.set(userInfo)
-            .then(() => {
-                basicInfoForm.classList.add("hidden");
-                mainMenu.classList.remove("hidden");
-            })
-            .catch((error) => {
-                console.error("儲存基本資料時發生錯誤：", error);
-            });
         } else {
             alert("請填寫所有資料！");
         }
