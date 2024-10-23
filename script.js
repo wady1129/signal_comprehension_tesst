@@ -8,9 +8,40 @@ const firebaseConfig = {
     appId: "1:370537364030:web:acf61139c600736b5baf6f"
   };
   
-  firebase.initializeApp(firebaseConfig);
-  const analytics = firebase.analytics();
-  const signalsavvytestDB = firebase.database().ref('signalsavvytest');
+firebase.initializeApp(firebaseConfig);
+const analytics = firebase.analytics();
+const signalsavvytestDB = firebase.database().ref('signalsavvytest');
+
+
+// 這裡新增追蹤使用者連線狀態的邏輯
+const userStatusDatabaseRef = firebase.database().ref('/status/' + userInfo.email);
+
+const isOfflineForDatabase = {
+    state: 'offline',
+    last_changed: firebase.database.ServerValue.TIMESTAMP,
+};
+
+const isOnlineForDatabase = {
+    state: 'online',
+    last_changed: firebase.database.ServerValue.TIMESTAMP,
+};
+
+// 監聽 Firebase 的連線狀態
+const connectedRef = firebase.database().ref('.info/connected');
+connectedRef.on('value', (snapshot) => {
+    if (snapshot.val() === true) {
+        // 當使用者斷線時自動將狀態設為離線
+        userStatusDatabaseRef.onDisconnect().set(isOfflineForDatabase).then(() => {
+            // 當使用者連線時將狀態設為在線
+            userStatusDatabaseRef.set(isOnlineForDatabase);
+        });
+    }
+});
+
+// 在頁面關閉或重新整理時將使用者設為離線
+window.onbeforeunload = function() {
+    userStatusDatabaseRef.set(isOfflineForDatabase);
+};
 
 
 const questions = [
