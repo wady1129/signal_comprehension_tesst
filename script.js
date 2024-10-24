@@ -12,9 +12,7 @@ firebase.initializeApp(firebaseConfig);
 const analytics = firebase.analytics();
 const signalsavvytestDB = firebase.database().ref('signalsavvytest');
 
-
-// 這裡新增追蹤使用者連線狀態的邏輯
-const userStatusDatabaseRef = firebase.database().ref('/status/' + userInfo.email);
+let userStatusDatabaseRef; // 延遲初始化
 
 const isOfflineForDatabase = {
     state: 'offline',
@@ -24,23 +22,6 @@ const isOfflineForDatabase = {
 const isOnlineForDatabase = {
     state: 'online',
     last_changed: firebase.database.ServerValue.TIMESTAMP,
-};
-
-// 監聽 Firebase 的連線狀態
-const connectedRef = firebase.database().ref('.info/connected');
-connectedRef.on('value', (snapshot) => {
-    if (snapshot.val() === true) {
-        // 當使用者斷線時自動將狀態設為離線
-        userStatusDatabaseRef.onDisconnect().set(isOfflineForDatabase).then(() => {
-            // 當使用者連線時將狀態設為在線
-            userStatusDatabaseRef.set(isOnlineForDatabase);
-        });
-    }
-});
-
-// 在頁面關閉或重新整理時將使用者設為離線
-window.onbeforeunload = function() {
-    userStatusDatabaseRef.set(isOfflineForDatabase);
 };
 
 
@@ -260,6 +241,26 @@ document.addEventListener("DOMContentLoaded", () => {
             userInfo.commute = commute;
             basicInfoForm.classList.add("hidden");
             mainMenu.classList.remove("hidden");
+            
+            // 在這裡初始化 userStatusDatabaseRef 並設定連線狀態
+            userStatusDatabaseRef = firebase.database().ref('/status/' + userInfo.email);
+
+            const connectedRef = firebase.database().ref('.info/connected');
+            connectedRef.on('value', (snapshot) => {
+                if (snapshot.val() === true) {
+                    // 當使用者斷線時自動將狀態設為離線
+                    userStatusDatabaseRef.onDisconnect().set(isOfflineForDatabase).then(() => {
+                        // 當使用者連線時將狀態設為在線
+                        userStatusDatabaseRef.set(isOnlineForDatabase);
+                    });
+                }
+            });
+            // 在頁面關閉或重新整理時將使用者設為離線
+            window.onbeforeunload = function() {
+                userStatusDatabaseRef.set(isOfflineForDatabase);
+            };
+
+            
         } else {
             alert("請填寫所有資料！");
         }
