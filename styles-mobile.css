@@ -556,3 +556,31 @@ nav .logo {
 #main-menu:hover {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
+/* 抽獎訊息 */
+#winner-message{
+  margin-top: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  color: #e67e22;   /* 橘色醒目 */
+}
+#winner-message.fail{ color:#555; }   /* 未中獎灰色 */
+
+.chart-container {
+    width: 100%;
+    max-width: 600px;
+    height: 0;
+    padding-bottom: 75%; /* 這是 4:3 的比例 */
+    position: relative;
+    background-color: #f4f4f4;
+    margin: auto;
+}
+
+/* 讓 canvas 裡的內容自適應 container */
+.chart-container canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
