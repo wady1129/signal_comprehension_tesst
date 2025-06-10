@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -15,66 +14,55 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-
     <!-- 桌面端樣式 -->
     <link rel="stylesheet" href="styles.css" media="screen and (min-width: 768px)">
-    
-    <!-- 移動端樣式 -->
+    <!-- 行動端樣式 -->
     <link rel="stylesheet" href="styles-mobile.css" media="screen and (max-width: 767px)">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head> 
 <body>
 
     <div id="survey-intro">
         <h1>駕駛人行為測驗問卷說明</h1>
-        <p>感謝您抽出寶貴的時間參與本次問卷調查。本研究旨在探討駕駛人對不同左轉號誌設計的理解程度。您提供的問卷數據將為左轉號誌設計的改進提供重要數據支持，問卷的填寫大約需要 5 分鐘。</p>
-        <p>再次感謝您的參與和支持！</p>
+        <p>感謝您抽出寶貴的時間參與本次問卷調查。本研究旨在探討駕駛人對不同左轉號誌設計的理解程度。問卷約需 5 分鐘。</p>
         <h2>個人資料保護聲明</h2>
-        <p>在參與問卷的過程中，我們會確保您的個人資料安全。所有收集的資料僅供本次研究使用，並且會以匿名的方式進行處理。我們不會將任何個人資料洩露給第三方，且所有資料在研究結束後將被妥善銷毀。</p>
+        <p>所有收集的資料僅供本次研究使用，並會以匿名方式處理，不會外洩。</p>
         <h2>抽獎說明</h2>
-        <p>為了提升數據的可信度，我們誠摯邀請您認真填寫每一個問題，並請提供正確的電子郵件。我們預計收集 300 份有效問卷數據，所有有效完成問卷的受訪者皆有機會參加抽獎活動。問卷結束後，我們將從有效問卷中隨機抽取 10 名幸運得主，每位得主將獲得星巴克禮卷一張。</p>
+        <p>完成問卷後，有機會抽中星巴克禮卷，機率 10%。</p>
         <button id="agree-button">我已閱讀並同意以上說明，開始填寫問卷</button>
     </div>
 
-
-    
     <div id="basic-info-form" class="hidden">
         <h1>駕駛人基本資料</h1>
-        <form id="basic-info-form" method="POST">
+        <form method="POST">
             <label for="email">電子郵件:</label>
-            <input type="email" id="email" name="email" required>
-            <br>
+            <input type="email" id="email" required><br>
             <label for="gender">性別:</label>
-            <select id="gender" name="gender" required>
+            <select id="gender" required>
                 <option value="">選擇性別</option>
                 <option value="male">男性</option>
                 <option value="female">女性</option>
-            </select>
-            <br>
+            </select><br>
             <label for="age">年齡:</label>
-            <input type="number" id="age" name="age" min="18" required>
-            <br>
-            <label for="frequency">駕駛汽車頻率:</label>
-            <select id="frequency" name="frequency" required>
-                <option value="">選擇駕駛頻率</option>
-                <option value="daily">每日1次</option>
-                <option value="weekly">每週至少1次</option>
-                <option value="monthly">每月至少1次</option>
-                <option value="rarely">每年至少1次</option>
-                <option value="no driving license">無汽車駕照</option>
-            </select>
-            <br>
-            <label for="experience">駕駛汽車經驗年數:</label>
-            <input type="number" id="experience" name="experience" min="0" required>
-            <br>
+            <input type="number" id="age" min="18" required><br>
+            <label for="frequency">駕駛頻率:</label>
+            <select id="frequency" required>
+                <option value="">選擇頻率</option>
+                <option value="daily">每日一次</option>
+                <option value="weekly">每週一次</option>
+                <option value="monthly">每月至少一次</option>
+                <option value="rarely">每年至少一次</option>
+            </select><br>
+            <label for="experience">駕駛經驗(年):</label>
+            <input type="number" id="experience" min="0" required><br>
             <label for="commute">主要通勤方式:</label>
-            <select id="commute" name="commute" required>
-                <option value="">選擇通勤方式</option>
+            <select id="commute" required>
+                <option value="">選擇方式</option>
                 <option value="car">汽車</option>
                 <option value="motorbike">機車</option>
                 <option value="public-transport">大眾運輸</option>
                 <option value="other">其他</option>
-            </select>
-            <br>
+            </select><br>
             <button type="button" id="submit-info-button">提交資料</button>
         </form>
     </div>
@@ -87,41 +75,21 @@
         <div class="rules" style="text-align: left;">
             <h2>測驗規則</h2>
             <ol>
-                <li>總共21題，每題均為判斷號誌含意(判斷號誌是保護左轉、非保護左轉、不能左轉)單選擇題</li>
-                <li>每題均為不同情境與不同號誌組合，其中包含現有號誌(不另外解釋)，以及引入獨立左轉號誌，說明如下表</li>
-                <li>進入題目頁面後，駕駛模擬影片會自動播放</li>
-                <li>影片播放前3秒號誌為全黑，3秒後依顯示號誌點擊選項按鈕作答。本測驗將會計時反應時間，請在測驗全程保持專注，並在看到號誌理解後迅速作答。</li>
-                <li><strong style="color: red;">請根據號誌所傳達的指令做選擇</strong></li>
+                <li>共 21 題，單選題 (保護左轉／非保護左轉／不能左轉)。</li>
+                <li>每題場景與號誌組合皆不同，詳見下表。</li>
+                <li>進入題目頁面後，模擬影片自動播放。</li>
+                <li>影片前 3 秒全黑，3 秒後顯示號誌，開始計時並請儘速作答。</li>
+                <li><strong style="color: red;">請依號誌指令作選擇。</strong></li>
             </ol>
-    
             <table class="styled-table">
-                <tr>
-                    <td>&nbsp;</td><td>主要號誌</td><td>圖</td><td>左轉專用號誌</td><td>圖</td><td>號誌含意</td><td>已閱讀</td>
-                </tr>
-                <tr>
-                    <td>(a)</td><td>直行右轉號誌</td><td><img src="橫4_直行右轉.jpg" alt="主要號誌 (a)" style="width: 50px;"></td><td>黃色箭頭長亮</td><td><img src="直_黃箭.jpg" alt="左轉號誌 (a)" style="width: 20px;"></td><td>非保護左轉(需讓行)</td><td><input type="checkbox"></td>
-                </tr>
-                <tr>
-                    <td>(b)</td><td>直行右轉號誌</td><td><img src="橫4_直行右轉.jpg" alt="主要號誌 (b)" style="width: 50px;"></td><td>黃色箭頭閃爍</td><td><img src="直_黃箭_閃.gif" alt="左轉號誌 (b)" style="width: 20px;"></td><td>非保護左轉(需讓行)</td><td><input type="checkbox"></td>
-                </tr>
-                <tr>
-                    <td>(c)</td><td>直行右轉號誌</td><td><img src="橫4_直行右轉.jpg" alt="主要號誌 (c)" style="width: 50px;"></td><td>綠色箭頭閃爍</td><td><img src="直_綠箭_閃.gif" alt="左轉號誌 (c)" style="width: 20px;"></td><td>非保護左轉(需讓行)</td><td><input type="checkbox"></td>
-                </tr>
-                <tr>
-                    <td>(d)</td><td>直行右轉號誌</td><td><img src="橫4_直行右轉.jpg" alt="主要號誌 (d)" style="width: 50px;"></td><td>綠色圓型閃爍</td><td><img src="直_綠圓_閃.gif" alt="左轉號誌 (d)" style="width: 20px;"></td><td>非保護左轉(需讓行)</td><td><input type="checkbox"></td>
-                </tr>
-                <tr>
-                    <td>(e)</td><td>直行右轉號誌</td><td><img src="橫4_直行右轉.jpg" alt="主要號誌 (e)" style="width: 50px;"></td><td>綠色箭頭長亮</td><td><img src="直_綠箭.jpg" alt="左轉號誌 (e)" style="width: 20px;"></td><td>保護左轉</td><td><input type="checkbox"></td>
-                </tr>
-                <tr>
-                    <td>(f)</td><td>直行右轉號誌</td><td><img src="橫4_直行右轉.jpg" alt="主要號誌 (f)" style="width: 50px;"></td><td>綠色圓型長亮</td><td><img src="直_綠圓.png" alt="左轉號誌 (f)" style="width: 20px;"></td><td>保護左轉</td><td><input type="checkbox"></td>
-                </tr>
-                <tr>
-                    <td>(g)</td><td>紅燈號誌</td><td><img src="橫4_紅圓.jpg" alt="主要號誌 (g)" style="width: 50px;"></td><td>綠色箭頭長亮</td><td><img src="直_綠箭.jpg" alt="左轉號誌 (g)" style="width: 20px;"></td><td>保護左轉</td><td><input type="checkbox"></td>
-                </tr>
-                <tr>
-                    <td>(h)</td><td>紅燈號誌</td><td><img src="橫4_紅圓.jpg" alt="主要號誌 (h)" style="width: 50px;"></td><td>綠色箭頭長亮</td><td><img src="直_綠圓.png" alt="左轉號誌 (h)" style="width: 20px;"></td><td>保護左轉</td><td><input type="checkbox"></td>
-                </tr>
+                <thead>
+                    <tr>
+                        <td>&nbsp;</td><td>主要號誌</td><td>圖</td><td>左轉專用號誌</td><td>圖</td><td>號誌含意</td><td>已閱讀</td>
+                    </tr>
+                </thead>
+                <tbody id="rules-table-body">
+                    <!-- 由 JavaScript 動態生成 -->
+                </tbody>
             </table>
         </div>        
     </div>
@@ -138,92 +106,13 @@
         </div>
     </div>
     
-<div id="open-ended-questions" class="hidden">
-    <h2>請依據下列左轉號誌的理解程度選擇您的看法：</h2>
-    <div class="question-block">
-        <label for="likert-q1" style="text-align: center; display: block;">(a) 直行右轉號誌 <img src="橫4_直行右轉.jpg" alt="主要號誌 (a)" style="width: 50px; display: inline-block; margin-right: 10px;"> + 左轉黃色箭頭長亮 <img src="直_黃箭.jpg" alt="左轉號誌 (a)" style="width: 16px; display: inline-block; vertical-align: middle;"></label>
-        <div class="options">
-            <label><input type="radio" name="likert1" value="5"> 非常理解（完全理解）</label>
-            <label><input type="radio" name="likert1" value="4"> 有點理解（大致上理解）</label>
-            <label><input type="radio" name="likert1" value="3"> 中立（有些理解，也有些困惑）</label>
-            <label><input type="radio" name="likert1" value="2"> 有點困惑（不太理解）</label>
-            <label><input type="radio" name="likert1" value="1"> 非常困惑（完全不理解）</label>
+    <div id="open-ended-questions" class="hidden">
+        <h2>請依下列左轉號誌理解程度作答：</h2>
+        <div id="likert-container">
+            <!-- 由 JavaScript 動態生成 -->
         </div>
+        <button id="submit-open-ended-button">提交並查看結果</button>
     </div>
-    <div class="question-block">
-        <label for="likert-q2" style="text-align: center; display: block;">(b) 直行右轉號誌 <img src="橫4_直行右轉.jpg" alt="主要號誌 (b)" style="width: 50px; display: inline-block; margin-right: 10px;"> + 左轉黃色箭頭閃爍 <img src="直_黃箭_閃.gif" alt="左轉號誌 (b)" style="width: 16px; display: inline-block; vertical-align: middle;"></label>
-        <div class="options">
-            <label><input type="radio" name="likert2" value="5"> 非常理解（完全理解）</label>
-            <label><input type="radio" name="likert2" value="4"> 有點理解（大致上理解）</label>
-            <label><input type="radio" name="likert2" value="3"> 中立（有些理解，也有些困惑）</label>
-            <label><input type="radio" name="likert2" value="2"> 有點困惑（不太理解）</label>
-            <label><input type="radio" name="likert2" value="1"> 非常困惑（完全不理解）</label>
-        </div>
-    </div>
-    <div class="question-block">
-        <label for="likert-q3" style="text-align: center; display: block;">(c) 直行右轉號誌 <img src="橫4_直行右轉.jpg" alt="主要號誌 (c)" style="width: 50px; display: inline-block; margin-right: 10px;"> + 左轉綠色箭頭閃爍 <img src="直_綠箭_閃.gif" alt="左轉號誌 (c)" style="width: 16px; display: inline-block; vertical-align: middle;"></label>
-        <div class="options">
-            <label><input type="radio" name="likert3" value="5"> 非常理解（完全理解）</label>
-            <label><input type="radio" name="likert3" value="4"> 有點理解（大致上理解）</label>
-            <label><input type="radio" name="likert3" value="3"> 中立（有些理解，也有些困惑）</label>
-            <label><input type="radio" name="likert3" value="2"> 有點困惑（不太理解）</label>
-            <label><input type="radio" name="likert3" value="1"> 非常困惑（完全不理解）</label>
-        </div>
-    </div>
-    <div class="question-block">
-        <label for="likert-q4" style="text-align: center; display: block;">(d) 直行右轉號誌 <img src="橫4_直行右轉.jpg" alt="主要號誌 (d)" style="width: 50px; display: inline-block; margin-right: 10px;"> + 左轉綠色圓型閃爍 <img src="直_綠圓_閃.gif" alt="左轉號誌 (d)" style="width: 16px; display: inline-block; vertical-align: middle;"></label>
-        <div class="options">
-            <label><input type="radio" name="likert4" value="5"> 非常理解（完全理解）</label>
-            <label><input type="radio" name="likert4" value="4"> 有點理解（大致上理解）</label>
-            <label><input type="radio" name="likert4" value="3"> 中立（有些理解，也有些困惑）</label>
-            <label><input type="radio" name="likert4" value="2"> 有點困惑（不太理解）</label>
-            <label><input type="radio" name="likert4" value="1"> 非常困惑（完全不理解）</label>
-        </div>
-    </div>
-    <div class="question-block">
-        <label for="likert-q5" style="text-align: center; display: block;">(e) 直行右轉號誌 <img src="橫4_直行右轉.jpg" alt="主要號誌 (e)" style="width: 50px; display: inline-block; margin-right: 10px;"> + 左轉綠色箭頭長亮 <img src="直_綠箭.jpg" alt="左轉號誌 (e)" style="width: 16px; display: inline-block; vertical-align: middle;"></label>
-        <div class="options">
-            <label><input type="radio" name="likert5" value="5"> 非常理解（完全理解）</label>
-            <label><input type="radio" name="likert5" value="4"> 有點理解（大致上理解）</label>
-            <label><input type="radio" name="likert5" value="3"> 中立（有些理解，也有些困惑）</label>
-            <label><input type="radio" name="likert5" value="2"> 有點困惑（不太理解）</label>
-            <label><input type="radio" name="likert5" value="1"> 非常困惑（完全不理解）</label>
-        </div>
-    </div>
-    <div class="question-block">
-        <label for="likert-q6" style="text-align: center; display: block;">(f) 直行右轉號誌 <img src="橫4_直行右轉.jpg" alt="主要號誌 (f)" style="width: 50px; display: inline-block; margin-right: 10px;"> + 左轉綠色圓型長亮 <img src="直_綠圓.png" alt="左轉號誌 (f)" style="width: 16px; display: inline-block; vertical-align: middle;"></label>
-        <div class="options">
-            <label><input type="radio" name="likert6" value="5"> 非常理解（完全理解）</label>
-            <label><input type="radio" name="likert6" value="4"> 有點理解（大致上理解）</label>
-            <label><input type="radio" name="likert6" value="3"> 中立（有些理解，也有些困惑）</label>
-            <label><input type="radio" name="likert6" value="2"> 有點困惑（不太理解）</label>
-            <label><input type="radio" name="likert6" value="1"> 非常困惑（完全不理解）</label>
-        </div>
-    </div>
-    <div class="question-block">
-        <label for="likert-q7" style="text-align: center; display: block;">(g) 紅燈號誌 <img src="橫4_紅圓.jpg" alt="主要號誌 (g)" style="width: 50px; display: inline-block; margin-right: 10px;"> + 左轉綠色箭頭長亮 <img src="直_綠箭.jpg" alt="左轉號誌 (g)" style="width: 16px; display: inline-block; vertical-align: middle;"></label>
-        <div class="options">
-            <label><input type="radio" name="likert7" value="5"> 非常理解（完全理解）</label>
-            <label><input type="radio" name="likert7" value="4"> 有點理解（大致上理解）</label>
-            <label><input type="radio" name="likert7" value="3"> 中立（有些理解，也有些困惑）</label>
-            <label><input type="radio" name="likert7" value="2"> 有點困惑（不太理解）</label>
-            <label><input type="radio" name="likert7" value="1"> 非常困惑（完全不理解）</label>
-        </div>
-    </div>
-    <div class="question-block">
-        <label for="likert-q8" style="text-align: center; display: block;">(h) 紅燈號誌 <img src="橫4_紅圓.jpg" alt="主要號誌 (h)" style="width: 50px; display: inline-block; margin-right: 10px;"> + 左轉綠色圓型長亮 <img src="直_綠圓.png" alt="左轉號誌 (h)" style="width: 16px; display: inline-block; vertical-align: middle;"></label>
-        <div class="options">
-            <label><input type="radio" name="likert8" value="5"> 非常理解（完全理解）</label>
-            <label><input type="radio" name="likert8" value="4"> 有點理解（大致上理解）</label>
-            <label><input type="radio" name="likert8" value="3"> 中立（有些理解，也有些困惑）</label>
-            <label><input type="radio" name="likert8" value="2"> 有點困惑（不太理解）</label>
-            <label><input type="radio" name="likert8" value="1"> 非常困惑（完全不理解）</label>
-        </div>
-    </div>
-    
-    <button id="submit-open-ended-button">提交並查看結果</button>
-</div>
-
 
     <div id="result-container" class="hidden">
         <h2>您的答題結果：</h2>
@@ -238,7 +127,10 @@
             </thead>
             <tbody></tbody>
         </table>
-        <div id="summary"></div> <!-- 用於顯示答對數與答對率 -->
+        <div id="summary"></div>
+        <div class="chart-container">
+            <canvas id="result-chart"></canvas>
+        </div>
     </div>
 
     <script src="script.js"></script>
